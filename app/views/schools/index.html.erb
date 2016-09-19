@@ -1,0 +1,26 @@
+<h1>Listing Schools</h1>
+<%= link_to 'New School', new_school_path %>
+<%= link_to 'Back', root_path %>
+
+<table border="1" cellpadding="10">
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zipcode</th>
+    <th>Phone</th>
+  </tr>
+
+  <% @schools.each do |school| %>
+      <tr>
+        <td><%= school.name %></td>
+        <td><%= school.address %></td>
+        <td><%= school.city %></td>
+        <td><%= school.state %></td>
+        <td><%= school.zipcode %></td>
+        <td><%= school.phone %></td>
+        <td><%= link_to 'Show', school_path(school) %></td>
+      </tr>
+  <% end %>
+</table>
