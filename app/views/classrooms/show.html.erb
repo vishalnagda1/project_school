@@ -1,0 +1,12 @@
+<p>
+  <strong>Name :</strong>
+  <%= @classroom.name %>
+</p>
+
+<p>
+  <strong>No Of Students :</strong>
+  <%= @classroom.no_of_students %>
+</p>
+
+<%= link_to 'Edit', edit_classroom_path(@classroom) %> |
+<%= link_to 'School Dashboard', classrooms_path %>
