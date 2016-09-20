@@ -47,7 +47,7 @@ class SubjectsController < ApplicationController
   private
   # This fuction is for whitelisting the required parameters.
   def subject_params
-    params.require(:subject).permit(:name, :address, :city, :state, :zipcode, :phone)
+    params.require(:subject).permit(:name)
   end
 
 end

@@ -1,0 +1,42 @@
+<p>
+  <strong>Name :</strong>
+  <%= @student.name %>
+</p>
+
+<p>
+  <strong>Father's Name :</strong>
+  <%= @student.father_name %>
+</p>
+
+<p>
+  <strong>Mother's Name :</strong>
+  <%= @student.mother_name %>
+</p>
+
+<p>
+  <strong>Address :</strong>
+  <%= @student.address %>
+</p>
+
+<p>
+  <strong>City :</strong>
+  <%= @student.city %>
+</p>
+
+<p>
+  <strong>State :</strong>
+  <%= @student.state %>
+</p>
+
+<p>
+  <strong>Zipcode :</strong>
+  <%= @student.zipcode %>
+</p>
+
+<p>
+  <strong>Phone :</strong>
+  <%= @student.phone %>
+</p>
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Student Dashboard', students_path %>
