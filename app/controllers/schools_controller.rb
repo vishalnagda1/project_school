@@ -12,6 +12,10 @@ class SchoolsController < ApplicationController
     @school = School.new  # it'll create a new instance variable called @school.
   end
 
+  def edit
+    @school = School.find(params[:id])  # it'll update the school.
+  end
+
   def create
     # render plain: params[:school].inspect
     @school = School.new(school_params)   # it'll create a new school with all the params.
@@ -21,6 +25,23 @@ class SchoolsController < ApplicationController
     else
       render 'new'  # this method is used so that the @school object is passed back to the new template when it is rendered
     end
+  end
+
+  def update
+    @school = School.find(params[:id])
+
+    if @school.update(school_params)  # it'll update school and return boolean values.
+      redirect_to @school
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @school = School.find(params[:id])
+    @school.destroy   # it'll delete the requested school, based on School ID
+
+    redirect_to schools_path
   end
 
   private
