@@ -31,16 +31,16 @@
     <div class="field">
       <%= f.label :Select_Classrooms  %><br>
       <% School.find(params[:format]).classrooms.each do |classroom| %>
-          <%= classroom.name %>
-          <%= check_box_tag :classroom_ids, classroom.id, @teacher.classrooms.include?(classroom), :name => "teacher[classroom_ids][]" %>
+        <%= classroom.name %>
+        <%= check_box_tag :classroom_ids, classroom.id, @teacher.classrooms.include?(classroom), :name => "teacher[classroom_ids][]" %>
       <% end %>
     </div>
     <br>
     <div class="field">
       <%= f.label :Select_Subjects  %><br>
       <% School.find(params[:format]).subjects.each do |subject| %>
-          <%= subject.name %>
-          <%= check_box_tag :subject_ids, subject.id, @teacher.subjects.include?(subject), :name => "teacher[subject_ids][]" %>
+        <%= subject.name %>
+        <%= check_box_tag :subject_ids, subject.id, @teacher.subjects.include?(subject), :name => "teacher[subject_ids][]" %>
       <% end %>
     </div>
 
