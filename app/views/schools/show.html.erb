@@ -28,7 +28,9 @@
   <%= @school.phone %>
 </p>
 
-<%= link_to 'Edit', edit_school_path(@school) %> |
+<%= link_to 'Edit', edit_school_path(@school) %>
 <%= link_to 'School Dashboard', schools_path %>
 <%= link_to 'Create Classroom', new_classroom_path(@school) %>
-<%= link_to 'View Classroom', classrooms_school_class_index_path(@school) %>
+<%= link_to 'View Classrooms', classrooms_index_by_school_id_path(@school) %>
+<%= link_to 'Create Subject', new_subject_path(@school) %>
+<%= link_to 'View Subjects', subjects_index_by_school_id_path(@school) %>

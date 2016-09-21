@@ -4,7 +4,7 @@ class ClassroomsController < ApplicationController
     @classrooms = Classroom.all   #It'll return all the available Classroom.
   end
 
-  def school_class_index
+  def index_by_school_id
     # render plain: params[:classroom].inspect
     p params
     @school = School.find(params[:format])

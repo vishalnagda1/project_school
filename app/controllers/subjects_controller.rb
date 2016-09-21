@@ -4,6 +4,14 @@ class SubjectsController < ApplicationController
     @subjects = Subject.all   #It'll return all the available Subject.
   end
 
+  def index_by_school_id
+    @school = School.find(params[:format])
+
+    if @school
+      @subjects = @school.subjects
+    end
+  end
+
   def show
     @subject = Subject.find(params[:id])  #it'll show a requested Subject based on Subject ID.
   end
@@ -47,7 +55,7 @@ class SubjectsController < ApplicationController
   private
   # This fuction is for whitelisting the required parameters.
   def subject_params
-    params.require(:subject).permit(:name)
+    params.require(:subject).permit(:name, :school_id, :classroom_id)
   end
 
 end

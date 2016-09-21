@@ -3,5 +3,10 @@
   <%= @subject.name %>
 </p>
 
+<p>
+  <strong>School Name :</strong>
+  <%= @subject.school.name %>
+</p>
+
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
 <%= link_to 'Subject Dashboard', subjects_path %>
