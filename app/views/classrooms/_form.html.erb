@@ -19,6 +19,11 @@
       <%= f.label :no_of_students %><br>
       <%= f.number_field :no_of_students %>
     </div>
+    <div class="field">
+      <% f.label :school_id %>
+      <%= f.number_field :school_id, :value => params[:format], :type => "hidden" %>
+
+    </div>
     <div class="actions">
       <%= f.submit %>
     </div>

@@ -4,6 +4,17 @@ class ClassroomsController < ApplicationController
     @classrooms = Classroom.all   #It'll return all the available Classroom.
   end
 
+  def school_class_index
+    # render plain: params[:classroom].inspect
+    p params
+    @school = School.find(params[:format])
+    p @school
+    if @school
+      @classrooms = @school.classrooms
+      p @classrooms
+    end
+  end
+
   def show
     @classroom = Classroom.find(params[:id])  #it'll show a requested Classroom based on Classroom ID.
   end
@@ -47,7 +58,7 @@ class ClassroomsController < ApplicationController
   private
   # This fuction is for whitelisting the required parameters.
   def classroom_params
-    params.require(:classroom).permit(:name, :no_of_students)
+    params.require(:classroom).permit(:name, :no_of_students, :school_id)
   end
 
 end

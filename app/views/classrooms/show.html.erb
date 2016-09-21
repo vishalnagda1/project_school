@@ -8,5 +8,10 @@
   <%= @classroom.no_of_students %>
 </p>
 
+<p>
+  <strong>School :</strong>
+  <%= @classroom.school.name %>
+</p>
+
 <%= link_to 'Edit', edit_classroom_path(@classroom) %> |
 <%= link_to 'Classrooms Dashboard', classrooms_path %>
