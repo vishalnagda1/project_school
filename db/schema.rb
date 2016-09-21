@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921043032) do
+ActiveRecord::Schema.define(version: 20160921123314) do
 
   create_table "classrooms", force: :cascade do |t|
     t.string   "name",           limit: 255
@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(version: 20160921043032) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "school_id",      limit: 4
+  end
+
+  create_table "classrooms_teachers", force: :cascade do |t|
+    t.integer "classroom_id", limit: 4
+    t.integer "teacher_id",   limit: 4
   end
 
   create_table "schools", force: :cascade do |t|
@@ -33,17 +38,18 @@ ActiveRecord::Schema.define(version: 20160921043032) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "father_name", limit: 255
-    t.string   "mother_name", limit: 255
-    t.text     "address",     limit: 65535
-    t.string   "city",        limit: 255
-    t.string   "zipcode",     limit: 255
-    t.string   "state",       limit: 255
-    t.string   "phone",       limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "school_id",   limit: 4
+    t.string   "name",         limit: 255
+    t.string   "father_name",  limit: 255
+    t.string   "mother_name",  limit: 255
+    t.text     "address",      limit: 65535
+    t.string   "city",         limit: 255
+    t.string   "zipcode",      limit: 255
+    t.string   "state",        limit: 255
+    t.string   "phone",        limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "school_id",    limit: 4
+    t.integer  "classroom_id", limit: 4
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -51,6 +57,11 @@ ActiveRecord::Schema.define(version: 20160921043032) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "school_id",  limit: 4
+  end
+
+  create_table "subjects_teachers", force: :cascade do |t|
+    t.integer "subject_id", limit: 4
+    t.integer "teacher_id", limit: 4
   end
 
   create_table "teachers", force: :cascade do |t|

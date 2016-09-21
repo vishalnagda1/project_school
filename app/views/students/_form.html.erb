@@ -1,5 +1,6 @@
 <%= form_for @student do |f| %>
 
+    <% school_id = Classroom.find_by_id(params[:format]).school.id %>
     <% if @student.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
@@ -44,7 +45,10 @@
       <%= f.number_field :phone %>
     </div>
     <div class="field">
-      <%= f.number_field :school_id, :value => params[:format], :type => "hidden" %>
+      <%= f.number_field :classroom_id, :value => params[:format], :type => "hidden" %>
+    </div>
+    <div class="field">
+      <%= f.number_field :school_id, :value => school_id, :type => "hidden" %>
     </div>
     <div class="actions">
       <%= f.submit %>

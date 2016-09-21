@@ -38,5 +38,15 @@
   <%= @student.phone %>
 </p>
 
+<p>
+  <strong>Classroom Name :</strong>
+  <%= @student.classroom.name %>
+</p>
+
+<p>
+  <strong>School Name :</strong>
+  <%= @student.school.name %>
+</p>
+
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Student Dashboard', students_path %>

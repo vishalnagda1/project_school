@@ -4,6 +4,14 @@ class TeachersController < ApplicationController
     @teachers = Teacher.all   #It'll return all the available Teacher.
   end
 
+  def index_by_school_id
+    @school = School.find(params[:format])
+
+    if @school
+      @teachers = @school.teachers
+    end
+  end
+
   def show
     @teacher = Teacher.find(params[:id])  #it'll show a requested Teacher based on Teacher ID.
   end
@@ -18,6 +26,8 @@ class TeachersController < ApplicationController
 
   def create
     # render plain: params[:teacher].inspect
+    # p teacher_params
+    teacher_params=(params.require(:teacher).permit(:name, :gender, :phone, :school_id)).merge(:classroom_ids=>params[:teacher][:classroom_ids],:subject_ids=>params[:teacher][:subject_ids])
     @teacher = Teacher.new(teacher_params)   # it'll create a new teacher with all the params.
 
     if @teacher.save   #it'll save the newly created teacher & returns the boolean values.
@@ -29,7 +39,7 @@ class TeachersController < ApplicationController
 
   def update
     @teacher = Teacher.find(params[:id])
-
+    teacher_params=(params.require(:teacher).permit(:name, :gender, :phone, :school_id)).merge(:classroom_ids=>params[:teacher][:classroom_ids],:subject_ids=>params[:teacher][:subject_ids])
     if @teacher.update(teacher_params)  # it'll update teacher and return boolean values.
       redirect_to @teacher
     else
@@ -47,7 +57,7 @@ class TeachersController < ApplicationController
   private
   # This fuction is for whitelisting the required parameters.
   def teacher_params
-    params.require(:teacher).permit(:name, :gender, :phone)
+    params.require(:teacher).permit(:name, :gender, :phone, :school_id)
   end
 
 end

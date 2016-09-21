@@ -13,5 +13,24 @@
   <%= @teacher.phone %>
 </p>
 
+<p>
+  <strong>School :</strong>
+  <%= @teacher.school.name %>
+</p>
+
+<p>
+  <strong>Subjects :</strong>
+  <% @teacher.subjects.each do |subject| %>
+    <%= subject.name %>&nbsp;
+  <% end %>
+</p>
+
+<p>
+  <strong>Classes :</strong>
+  <% @teacher.classrooms.each do |classroom| %>
+      <%= classroom.name %>&nbsp;
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_teacher_path(@teacher) %> |
 <%= link_to 'Teacher Dashboard', teachers_path %>

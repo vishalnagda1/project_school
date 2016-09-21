@@ -4,6 +4,14 @@ class StudentsController < ApplicationController
     @students = Student.all   #It'll return all the available Student.
   end
 
+  def index_by_classroom_id
+    @classroom = Classroom.find(params[:format])
+
+    if @classroom
+      @students = @classroom.students
+    end
+  end
+
   def show
     @student = Student.find(params[:id])  #it'll show a requested Student based on Student ID.
   end
@@ -47,7 +55,7 @@ class StudentsController < ApplicationController
   private
   # This fuction is for whitelisting the required parameters.
   def student_params
-    params.require(:student).permit(:name, :father_name, :mother_name, :address, :city, :state, :zipcode, :phone)
+    params.require(:student).permit(:name, :father_name, :mother_name, :address, :city, :state, :zipcode, :phone, :classroom_id, :school_id)
   end
   
 end
