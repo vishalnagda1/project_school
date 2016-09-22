@@ -51,6 +51,15 @@
     <div class="field">
       <%= f.number_field :school_id, :type => "hidden" %>
     </div>
+    <br>
+    <div class="field">
+      <%= f.label :Select_Subjects  %><br>
+      <% Classroom.find(@student.classroom.id).subjects.each do |subject| %>
+        <%= subject.name %>
+        <%= check_box_tag :subject_ids, subject.id, @student.subjects.include?(subject), :name => "student[subject_ids][]" %>
+      <% end %>
+    </div>
+    <br>
     <div class="actions">
       <%= f.submit %>
     </div>

@@ -39,6 +39,13 @@
 </p>
 
 <p>
+  <strong>Subjects :</strong>
+  <% @student.subjects.each do |subject| %>
+    <%= subject.name %>&nbsp;
+  <% end %>
+</p>
+
+<p>
   <strong>Classroom Name :</strong>
   <%= @student.classroom.name %>
 </p>

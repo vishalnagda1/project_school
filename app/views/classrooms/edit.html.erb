@@ -21,9 +21,19 @@
       <%= f.label :no_of_students %><br>
       <%= f.number_field :no_of_students %>
     </div>
+
+    <br>
+    <div class="field">
+      <%= f.label :Select_Subjects  %><br>
+      <% School.find(@classroom.school.id).subjects.each do |subject| %>
+          <%= check_box_tag :subject_ids, subject.id, @classroom.subjects.include?(subject), :name => "classroom[subject_ids][]" %>
+          <%= subject.name %>&nbsp;
+      <% end %>
+    </div>
+
     <div class="field">
       <%= f.number_field :school_id, :type => "hidden" %>
-    </div>
+    </div><br>
     <div class="actions">
       <%= f.submit %>
     </div>

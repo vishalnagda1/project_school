@@ -26,8 +26,8 @@ class StudentsController < ApplicationController
 
   def create
     # render plain: params[:student].inspect
+    student_params=(params.require(:student).permit(:name, :father_name, :mother_name, :address, :city, :state, :zipcode, :phone, :classroom_id, :school_id)).merge(:subject_ids=>params[:student][:subject_ids])
     @student = Student.new(student_params)   # it'll create a new student with all the params.
-
     if @student.save   #it'll save the newly created student & returns the boolean values.
       redirect_to @student
     else
@@ -37,7 +37,7 @@ class StudentsController < ApplicationController
 
   def update
     @student = Student.find(params[:id])
-
+    student_params=(params.require(:student).permit(:name, :father_name, :mother_name, :address, :city, :state, :zipcode, :phone, :classroom_id, :school_id)).merge(:subject_ids=>params[:student][:subject_ids])
     if @student.update(student_params)  # it'll update student and return boolean values.
       redirect_to @student
     else

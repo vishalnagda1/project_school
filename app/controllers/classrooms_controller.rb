@@ -29,6 +29,7 @@ class ClassroomsController < ApplicationController
 
   def create
     # render plain: params[:classroom].inspect
+    classroom_params=(params.require(:classroom).permit(:name, :no_of_students, :school_id)).merge(:subject_ids=>params[:classroom][:subject_ids])
     @classroom = Classroom.new(classroom_params)   # it'll create a new classroom with all the params.
 
     if @classroom.save   #it'll save the newly created classroom & returns the boolean values.
@@ -40,7 +41,7 @@ class ClassroomsController < ApplicationController
 
   def update
     @classroom = Classroom.find(params[:id])
-
+    classroom_params=(params.require(:classroom).permit(:name, :no_of_students, :school_id)).merge(:subject_ids=>params[:classroom][:subject_ids])
     if @classroom.update(classroom_params)  # it'll update Classroom and return boolean values.
       redirect_to @classroom
     else
