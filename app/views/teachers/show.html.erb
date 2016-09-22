@@ -32,5 +32,14 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Students :</strong>
+  <% @teacher.classrooms.each do |classroom| %>
+      <% classroom.students.each do |student| %>&nbsp;
+          <%= student.name %>
+      <% end %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_teacher_path(@teacher) %> |
 <%= link_to 'Teacher Dashboard', teachers_path %>
