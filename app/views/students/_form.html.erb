@@ -54,8 +54,8 @@
     <div class="field">
       <%= f.label :Select_Subjects  %><br>
       <% Classroom.find(params[:format]).subjects.each do |subject| %>
-          <%= check_box_tag :subject_ids, subject.id, @student.subjects.include?(subject), :name => "student[subject_ids][]" %>
-          <%= subject.name %>
+        <%= subject.name %>
+        <%= check_box_tag :subject_ids, subject.id, @student.subjects.include?(subject), :name => "student[subject_ids][]" %>
       <% end %>
     </div>
     <br>

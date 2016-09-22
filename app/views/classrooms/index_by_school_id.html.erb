@@ -1,31 +1,3 @@
 <h1>Classrooms Dashboard</h1>
-<%= link_to 'New classroom', schools_path %>
-<%= link_to 'Home', root_path %>
-<br><br>
-<table border="1" cellpadding="10">
-  <tr>
-    <th>Name</th>
-    <th>Students</th>
-    <th>School Name</th>
-    <th>Subjects</th>
-    <th colspan="3">Operations</th>
-  </tr>
 
-  <% @classrooms.each do |classroom| %>
-      <tr>
-        <td><%= classroom.name %></td>
-        <td><%= classroom.no_of_students %></td>
-        <td><%= classroom.school.name %></td>
-        <td>
-          <% classroom.subjects.each do |subject| %>
-              <%= subject.name %>&nbsp;&nbsp;
-          <% end %>
-        </td>
-        <td><%= link_to 'Show', classroom_path(classroom) %></td>
-        <td><%= link_to 'Edit', edit_classroom_path(classroom) %></td>
-        <td><%= link_to 'Destroy', classroom_path(classroom),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-</table>
+<%= render 'dashboard' %>

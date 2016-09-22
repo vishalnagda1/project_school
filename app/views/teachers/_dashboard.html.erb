@@ -1,0 +1,38 @@
+<%= link_to 'New Teacher', schools_path %>
+<%= link_to 'Home', root_path %>
+<br><br>
+<table border="1" cellpadding="10">
+  <tr>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Phone</th>
+    <th>Subjects</th>
+    <th>Classes</th>
+    <th>School</th>
+    <th colspan="3">Operations</th>
+  </tr>
+
+  <% @teachers.each do |teacher| %>
+      <tr>
+        <td><%= teacher.name %></td>
+        <td><%= teacher.gender %></td>
+        <td><%= teacher.phone %></td>
+        <td>
+          <% teacher.subjects.each do |subject| %>
+              <%= subject.name %>&nbsp;
+          <% end %>
+        </td>
+        <td>
+          <% teacher.classrooms.each do |classroom| %>
+              <%= classroom.name %>&nbsp;
+          <% end %>
+        </td>
+        <td><%= teacher.school.name %></td>
+        <td><%= link_to 'Show', teacher_path(teacher) %></td>
+        <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
+        <td><%= link_to 'Destroy', teacher_path(teacher),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>

@@ -29,10 +29,10 @@
 </p>
 
 <%= link_to 'Edit', edit_school_path(@school) %>
-<%= link_to 'School Dashboard', schools_path %>
-<%= link_to 'Create Classroom', new_classroom_path(@school) %>
-<%= link_to 'View Classrooms', classrooms_index_by_school_id_path(@school) %>
+<%= link_to 'School Dashboard', schools_path %>&nbsp;&nbsp;
 <%= link_to 'Create Subject', new_subject_path(@school) %>
-<%= link_to 'View Subjects', subjects_index_by_school_id_path(@school) %>
+<%= link_to 'View Subjects', subjects_index_by_school_id_path(@school) %>&nbsp;&nbsp;
+<%= link_to 'Create Classroom', new_classroom_path(@school) %>
+<%= link_to 'View Classrooms', classrooms_index_by_school_id_path(@school) %>&nbsp;&nbsp;
 <%= link_to 'Create Teacher', new_teacher_path(@school) %>
 <%= link_to 'View Teacher', teachers_index_by_school_id_path(@school) %>
