@@ -5,7 +5,7 @@ RSpec.describe SubjectsController, type: :controller do
     @school = FactoryGirl.create(:school)
   end
   describe "GET #index" do
-    it "populates an list of subjects" do
+    it "populates a list of subjects" do
       subject = FactoryGirl.create(:subject, :school_id => @school.id)
       get :index
       assigns(:subjects).should eq([subject])
@@ -17,18 +17,19 @@ RSpec.describe SubjectsController, type: :controller do
     end
   end
   describe "GET #index_by_school_id" do
-    it "populates an list of subjects by school id" do
+    it "populates a list of subjects by school id" do
       subject = FactoryGirl.create(:subject, :school_id => @school.id)
       get :index_by_school_id, :format=>@school.id
-      assigns(:subjects).should eq(School.find(subject.school_id).subjects)
+      assigns(:subjects).should eq([subject])
     end
 
-    it "should not populates an list of subjects by school id" do
+    it "should not populates a list of subjects by school id" do
       school1 = FactoryGirl.create(:school)
       subject = FactoryGirl.create(:subject, :school_id => @school.id)
       subject1 = FactoryGirl.create(:subject, :school_id => school1.id)
       get :index_by_school_id, :format=>@school.id
-      assigns(:subjects).should_not eq(School.find(subject1.school_id).subjects)
+      assigns(:subjects).should_not eq([subject1])
+      assigns(:subjects).should eq([subject])
     end
 
     it "renders the :index_by_school_id view" do

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe SchoolsController, type: :controller do
   describe "GET #index" do
-    it "populates an list of schools" do
+    it "populates a list of schools" do
       school = FactoryGirl.create(:school)
       get :index
       assigns(:schools).should eq([school])
@@ -31,6 +31,11 @@ RSpec.describe SchoolsController, type: :controller do
       expect(assigns(:school)).to be_a_new(School)
     end
   end
+  # context "EDIT" do
+  #   it "should render edit templet" do
+  #     expect(response).to render_template(:edit)
+  #   end
+  # end
   describe "POST create" do
     context "with valid attributes" do
       it "creates a new school" do

@@ -7,7 +7,7 @@ RSpec.describe TeachersController, type: :controller do
     @classroom = FactoryGirl.create(:classroom, :school_id => @school.id, :subject_ids=>[@subject.id])
   end
   describe "GET #index" do
-    it "populates an list of teachers" do
+    it "populates a list of teachers" do
       teacher = FactoryGirl.create(:teacher, :school_id => @school.id, :subject_ids=>[@subject.id], :classroom_ids=>[@classroom.id])
       get :index
       assigns(:teachers).should eq([teacher])
@@ -19,18 +19,19 @@ RSpec.describe TeachersController, type: :controller do
     end
   end
   describe "GET #index_by_school_id" do
-    it "populates an list of teachers by school id" do
+    it "populates a list of teachers by school id" do
       teacher = FactoryGirl.create(:teacher, :school_id => @school.id, :subject_ids=>[@subject.id], :classroom_ids=>[@classroom.id])
       get :index_by_school_id, :format=>@school.id
-      assigns(:teachers).should eq(School.find(teacher.school_id).teachers)
+      assigns(:teachers).should eq([teacher])
     end
 
-    it "should not populates an list of teachers by school id" do
+    it "should not populates a list of teachers by school id" do
       school1 = FactoryGirl.create(:school)
       teacher = FactoryGirl.create(:teacher, :school_id => @school.id, :subject_ids=>[@subject.id], :classroom_ids=>[@classroom.id])
       teacher1 = FactoryGirl.create(:teacher, :school_id => school1.id, :subject_ids=>[@subject.id], :classroom_ids=>[@classroom.id])
       get :index_by_school_id, :format=>@school.id
-      assigns(:teachers).should_not eq(School.find(teacher1.school_id).teachers)
+      assigns(:teachers).should_not eq([teacher1])
+      assigns(:teachers).should eq([teacher])
     end
 
     it "renders the :index_by_school_id view" do
