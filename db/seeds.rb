@@ -1,3 +1,5 @@
+DatabaseCleaner.clean_with(:truncation)
+
 School.create(:name=>"Dummy School 1", :address=>"Dummy Address", :city=>"Dummy City", :state=>"Dummy State", :zipcode=>"123456", :phone=>"1234567890")
 School.create(:name=>"Dummy School 2", :address=>"Dummy Address", :city=>"Dummy City", :state=>"Dummy State", :zipcode=>"123456", :phone=>"1234567890")
 
