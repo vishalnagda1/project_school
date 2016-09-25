@@ -46,6 +46,15 @@
 </p>
 
 <p>
+  <strong>Teachers :</strong>
+  <% @student.subjects.each do |subject| %>
+  <% subject.teachers.each do |teacher| %>
+        <%= teacher.name %>
+      <% end %>
+  <% end %>
+</p>
+
+<p>
   <strong>Classroom Name :</strong>
   <%= @student.classroom.name %>
 </p>

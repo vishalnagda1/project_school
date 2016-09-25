@@ -51,6 +51,13 @@ class ClassroomsController < ApplicationController
 
   def destroy
     @classroom = Classroom.find(params[:id])
+
+    # begin
+    #   Classroom.transaction do
+    #     Classroom.find(@classroom.id).students.destroy_all
+    #   end
+    # end
+
     @classroom.destroy   # it'll delete the requested Classroom, based on Classroom ID
 
     redirect_to classrooms_path

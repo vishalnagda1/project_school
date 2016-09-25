@@ -5,7 +5,7 @@
 
 <p>
   <strong>No Of Students :</strong>
-  <%= @classroom.no_of_students %>
+  <%= Classroom.find(@classroom.id).students.count %>
 </p>
 
 <p>

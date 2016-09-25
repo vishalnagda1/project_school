@@ -14,6 +14,12 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])  #it'll show a requested Student based on Student ID.
+    # @student = Student.find(params[:id])
+    # if @student
+    #   render :json => @student.to_json(:methods => [:subjects_details, :classroom_details, :school_details, :teachers_details]), :status => :ok
+    # else
+    #   render :nothing => true, :status => :unprocessable_entity
+    # end
   end
 
   def new
