@@ -6,12 +6,9 @@ class ClassroomsController < ApplicationController
 
   def index_by_school_id
     # render plain: params[:classroom].inspect
-    p params
     @school = School.find(params[:format])
-    p @school
     if @school
       @classrooms = @school.classrooms
-      p @classrooms
     end
   end
 
@@ -52,21 +49,14 @@ class ClassroomsController < ApplicationController
   def destroy
     @classroom = Classroom.find(params[:id])
 
-    # begin
-    #   Classroom.transaction do
-    #     Classroom.find(@classroom.id).students.destroy_all
-    #   end
-    # end
+    begin
+      Classroom.transaction do
+        Classroom.find(@classroom.id).students.destroy_all
+      end
+    end
 
     @classroom.destroy   # it'll delete the requested Classroom, based on Classroom ID
 
     redirect_to classrooms_path
   end
-
-  private
-  # This fuction is for whitelisting the required parameters.
-  def classroom_params
-    params.require(:classroom).permit(:name, :no_of_students, :school_id)
-  end
-
 end

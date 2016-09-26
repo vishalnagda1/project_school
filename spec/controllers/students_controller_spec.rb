@@ -56,6 +56,20 @@ RSpec.describe StudentsController, type: :controller do
       expect(assigns(:student)).to be_a_new(Student)
     end
   end
+  describe "GET 'edit'" do
+    before {
+      @student = FactoryGirl.create(:student, :school_id => @school.id, :subject_ids=>[@subject.id], :classroom_id=>@classroom.id)
+      get :edit, :id => @student.id
+    }
+
+    it "assigns @student" do
+      expect(assigns(:student)).to eq(@student)
+    end
+
+    it "renders the edit template" do
+      expect(response).to render_template("edit")
+    end
+  end
   describe "POST create" do
     context "with valid attributes" do
       it "creates a new student" do

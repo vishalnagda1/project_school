@@ -55,6 +55,20 @@ RSpec.describe SubjectsController, type: :controller do
       expect(assigns(:subject)).to be_a_new(Subject)
     end
   end
+  describe "GET 'edit'" do
+    before {
+      @subject = FactoryGirl.create(:subject, :school_id => @school.id)
+      get :edit, :id => @subject.id
+    }
+
+    it "assigns @subject" do
+      expect(assigns(:subject)).to eq(@subject)
+    end
+
+    it "renders the edit template" do
+      expect(response).to render_template("edit")
+    end
+  end
   describe "POST create" do
     context "with valid attributes" do
       it "creates a new subject" do

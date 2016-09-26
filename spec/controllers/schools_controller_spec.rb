@@ -31,11 +31,20 @@ RSpec.describe SchoolsController, type: :controller do
       expect(assigns(:school)).to be_a_new(School)
     end
   end
-  # context "EDIT" do
-  #   it "should render edit templet" do
-  #     expect(response).to render_template(:edit)
-  #   end
-  # end
+  describe "GET 'edit'" do
+    before {
+      @school = FactoryGirl.create(:school)
+      get :edit, :id => @school.id
+    }
+
+    it "assigns @school" do
+      expect(assigns(:school)).to eq(@school)
+    end
+
+    it "renders the edit template" do
+      expect(response).to render_template("edit")
+    end
+  end
   describe "POST create" do
     context "with valid attributes" do
       it "creates a new school" do

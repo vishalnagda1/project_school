@@ -53,11 +53,4 @@ class TeachersController < ApplicationController
 
     redirect_to teachers_path
   end
-
-  private
-  # This fuction is for whitelisting the required parameters.
-  def teacher_params
-    params.require(:teacher).permit(:name, :gender, :phone, :school_id)
-  end
-
 end
