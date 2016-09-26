@@ -48,8 +48,17 @@
 <p>
   <strong>Teachers :</strong>
   <% @student.subjects.each do |subject| %>
-  <% subject.teachers.each do |teacher| %>
-        <%= teacher.name %>
+    <% flag = 0 %>
+    <% subject.teachers.each do |teacher| %>
+      <% break if flag == 1 %>
+      <% teacher.classrooms.each do |classroom| %>
+        <% break if flag == 1 %>
+          <% if classroom.id == @student.classroom_id %>
+            <%= teacher.name %>
+            <% flag = 1 %>
+            <% break %>
+          <% end %>
+        <% end %>
       <% end %>
   <% end %>
 </p>
