@@ -1,5 +1,5 @@
-<%= link_to 'New Student', classrooms_path %>
-<%= link_to 'Home', root_path %>
+<%= link_to 'New Student', classrooms_index_by_school_id_path(params[:format]) %>
+<%= link_to 'Home', school_path(params[:format]) %>
 <br><br>
 <table border="1" cellpadding="10">
   <tr>

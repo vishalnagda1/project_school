@@ -6,4 +6,5 @@ class Subject < ActiveRecord::Base
 
   validates_presence_of :name, :school_id
   validates_numericality_of :school_id
+  validates_uniqueness_of :name
 end

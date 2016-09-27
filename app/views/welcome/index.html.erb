@@ -1,11 +1,24 @@
-<html>
-  <head><title>School Project</title></head>
-  <body>
-    <h1>Welcome To The Project School</h1>
-    <%= link_to 'SchoolProject', controller: 'schools' %>
-    <%= link_to 'Classroom', controller: 'classrooms' %>
-    <%= link_to 'Subject', controller: 'subjects' %>
-    <%= link_to 'Teacher', controller: 'teachers' %>
-    <%= link_to 'Student', controller: 'students' %>
-  </body>
-</html>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="../" class="navbar-brand">Project School</a>
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li>
+          <%= link_to 'School', controller: 'schools' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+  <div class="container">
+    <div class="row welcome-margin-top text-center">
+      <h1>Welcome To The Project School</h1>
+    </div>
+  </div>

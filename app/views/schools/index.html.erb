@@ -1,31 +1,56 @@
-<h1>School Dashboard</h1>
-<%= link_to 'New School', new_school_path %>
-<%= link_to 'Home', root_path %>
-<br><br>
-<table border="1" cellpadding="10">
-  <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Zipcode</th>
-    <th>Phone</th>
-    <th colspan="3">Operations</th>
-  </tr>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="../" class="navbar-brand">Project School</a>
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li>
+          <%= link_to 'New School', new_school_path %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row school-margin-top">
+    <div class="row">
+      <div class="col-md-12"><h1 class="text-center">School Dashboard</h1></div>
+    </div>
+    <br><br>
+    <div class="row">
+      <table class="table table-responsive table-bordered text-center">
+        <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Zipcode</th>
+          <th>Phone</th>
+          <th colspan="3">Operations</th>
+        </tr>
 
-  <% @schools.each do |school| %>
-      <tr>
-        <td><%= school.name %></td>
-        <td><%= school.address %></td>
-        <td><%= school.city %></td>
-        <td><%= school.state %></td>
-        <td><%= school.zipcode %></td>
-        <td><%= school.phone %></td>
-        <td><%= link_to 'Show', school_path(school) %></td>
-        <td><%= link_to 'Edit', edit_school_path(school) %></td>
-        <td><%= link_to 'Destroy', school_path(school),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-</table>
+        <% @schools.each do |school| %>
+            <tr>
+              <td><%= school.name %></td>
+              <td><%= school.address %></td>
+              <td><%= school.city %></td>
+              <td><%= school.state %></td>
+              <td><%= school.zipcode %></td>
+              <td><%= school.phone %></td>
+              <td><%= link_to 'Show', school_path(school) %></td>
+              <td><%= link_to 'Edit', edit_school_path(school) %></td>
+              <td><%= link_to 'Destroy', school_path(school),
+                              method: :delete,
+                              data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

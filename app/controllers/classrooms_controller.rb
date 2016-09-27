@@ -7,6 +7,7 @@ class ClassroomsController < ApplicationController
   def index_by_school_id # Only display classrooms of particular school.
     @school = School.find(params[:format])
     if @school
+      params[:format] = @school.id
       @classrooms = @school.classrooms
     end
   end
@@ -30,6 +31,7 @@ class ClassroomsController < ApplicationController
     if @classroom.save   #it'll save the newly created classroom & returns the boolean values.
       redirect_to @classroom
     else
+      params[:format] = @classroom.school_id
       render 'new'  # this method is used so that the @classroom object is passed back to the new template when it is rendered
     end
   end
@@ -40,6 +42,7 @@ class ClassroomsController < ApplicationController
     if @classroom.update(classroom_params)  # it'll update Classroom and return boolean values.
       redirect_to @classroom
     else
+      params[:format] = @classroom.school_id
       render 'edit'
     end
   end

@@ -8,6 +8,7 @@ class SubjectsController < ApplicationController
     @school = School.find(params[:format])
 
     if @school
+      params[:format] = @school.id
       @subjects = @school.subjects
     end
   end

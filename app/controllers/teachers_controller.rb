@@ -8,6 +8,7 @@ class TeachersController < ApplicationController
     @school = School.find(params[:format])
 
     if @school
+      params[:format]=@school.id
       @teachers = @school.teachers
     end
   end
@@ -31,6 +32,7 @@ class TeachersController < ApplicationController
     if @teacher.save   #it'll save the newly created teacher & returns the boolean values.
       redirect_to @teacher
     else
+      params[:format] = @teacher.school_id
       render 'new'  # this method is used so that the @teacher object is passed back to the new template when it is rendered
     end
   end
