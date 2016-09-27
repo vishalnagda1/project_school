@@ -17,7 +17,6 @@ class SchoolsController < ApplicationController
   end
 
   def create
-    # render plain: params[:school].inspect
     @school = School.new(school_params)   # it'll create a new school with all the params.
 
     if @school.save   #it'll save the newly created school & returns the boolean values.
@@ -41,7 +40,7 @@ class SchoolsController < ApplicationController
     @school = School.find(params[:id])
 
     begin
-      School.transaction do
+      School.transaction do # Before destroying school it'll destroy all the associated tables with it.
         School.find(@school.id).students.destroy_all
         School.find(@school.id).teachers.destroy_all
         School.find(@school.id).classrooms.destroy_all

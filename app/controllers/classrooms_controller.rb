@@ -4,8 +4,7 @@ class ClassroomsController < ApplicationController
     @classrooms = Classroom.all   #It'll return all the available Classroom.
   end
 
-  def index_by_school_id
-    # render plain: params[:classroom].inspect
+  def index_by_school_id # Only display classrooms of particular school.
     @school = School.find(params[:format])
     if @school
       @classrooms = @school.classrooms
@@ -25,7 +24,6 @@ class ClassroomsController < ApplicationController
   end
 
   def create
-    # render plain: params[:classroom].inspect
     classroom_params=(params.require(:classroom).permit(:name, :no_of_students, :school_id)).merge(:subject_ids=>params[:classroom][:subject_ids])
     @classroom = Classroom.new(classroom_params)   # it'll create a new classroom with all the params.
 
@@ -46,7 +44,7 @@ class ClassroomsController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy # Before destroying classroom it'll destroy the student's record which are associated with this particular school.
     @classroom = Classroom.find(params[:id])
 
     begin

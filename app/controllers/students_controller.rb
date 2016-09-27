@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
     @students = Student.all   #It'll return all the available Student.
   end
 
-  def index_by_classroom_id
+  def index_by_classroom_id # Only display students of particular classroom.
     @classroom = Classroom.find(params[:format])
 
     if @classroom
@@ -25,7 +25,6 @@ class StudentsController < ApplicationController
   end
 
   def create
-    # render plain: params[:student].inspect
     student_params=(params.require(:student).permit(:name, :father_name, :mother_name, :address, :city, :state, :zipcode, :phone, :classroom_id, :school_id)).merge(:subject_ids=>params[:student][:subject_ids])
     @student = Student.new(student_params)   # it'll create a new student with all the params.
     if @student.save   #it'll save the newly created student & returns the boolean values.

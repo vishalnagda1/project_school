@@ -4,7 +4,7 @@ class TeachersController < ApplicationController
     @teachers = Teacher.all   #It'll return all the available Teacher.
   end
 
-  def index_by_school_id
+  def index_by_school_id # Only display teachers of particular school.
     @school = School.find(params[:format])
 
     if @school
@@ -25,8 +25,6 @@ class TeachersController < ApplicationController
   end
 
   def create
-    # render plain: params[:teacher].inspect
-    # p teacher_params
     teacher_params=(params.require(:teacher).permit(:name, :gender, :phone, :school_id)).merge(:classroom_ids=>params[:teacher][:classroom_ids],:subject_ids=>params[:teacher][:subject_ids])
     @teacher = Teacher.new(teacher_params)   # it'll create a new teacher with all the params.
 

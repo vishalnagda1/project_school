@@ -4,7 +4,7 @@ class SubjectsController < ApplicationController
     @subjects = Subject.all   #It'll return all the available Subject.
   end
 
-  def index_by_school_id
+  def index_by_school_id # Only display subjects of particular school.
     @school = School.find(params[:format])
 
     if @school
@@ -25,10 +25,9 @@ class SubjectsController < ApplicationController
   end
 
   def create
-    # render plain: params[:subject].inspect
     @subject = Subject.new(subject_params)   # it'll create a new subject with all the params.
 
-    if @subject.save   #it'll save the newly created subject & returns the boolean values.
+    if @subject.save   # it'll save the newly created subject & returns the boolean values.
       redirect_to @subject
     else
       render 'new'  # this method is used so that the @subject object is passed back to the new template when it is rendered
