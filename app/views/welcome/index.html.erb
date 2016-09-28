@@ -1,24 +1,53 @@
-<div class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a href="../" class="navbar-brand">Project School</a>
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ProjectSchool</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+  <body>
+    <div class="container" id="schoolProjectIndex">
+      <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container" id="schoolContainer">
+          <div class="navbar-header">
+            <a href="../" class="navbar-brand" id="mainPage">Project School</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+              <li>
+                <a id="schoolMenu" class="form-contorl">School</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="homeDashboard">
+        <div class="row welcome-margin-top text-center">
+          <h1>Welcome To The Project School</h1>
+        </div>
+      </div>
+
+      <%= render partial: 'welcome/school_index' %>
+
+      <!--<div class="container" id="schoolProjectContainer">-->
+        <!--< %= yield %>-->
+      <!--</div>-->
     </div>
-    <div class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li>
-          <%= link_to 'School', controller: 'schools' %>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-  <div class="container">
-    <div class="row welcome-margin-top text-center">
-      <h1>Welcome To The Project School</h1>
-    </div>
-  </div>
+  </body>
+</html>
+
+<%= javascript_include_tag 'common/jquery.min'%>
+<%= javascript_include_tag 'index'%>
+<%= javascript_include_tag 'school/school_dashboard'%>
+<script>
+  $(document).ready(function () {
+    var index = new PS.Index();
+  });
+</script>
