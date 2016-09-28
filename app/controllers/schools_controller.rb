@@ -2,10 +2,17 @@ class SchoolsController < ApplicationController
 
   def index
     @schools = School.all   #It'll return all the available School.
+    render :json => @schools, :status => :ok
   end
 
   def show
-    @school = School.find(params[:id])  #it'll show a requested School based on School ID.
+    begin
+      @school = School.find(params[:id])  #it'll show a requested School based on School ID.
+      render :json => @school, :status => :ok
+    rescue => e
+      p e
+      render :json => { "error" => e.message}, :status => :unprocessable_entity
+    end
   end
 
   def new
@@ -17,40 +24,56 @@ class SchoolsController < ApplicationController
   end
 
   def create
-    @school = School.new(school_params)   # it'll create a new school with all the params.
-
-    if @school.save   #it'll save the newly created school & returns the boolean values.
-      redirect_to @school
-    else
-      render 'new'  # this method is used so that the @school object is passed back to the new template when it is rendered
+    begin
+      @school = School.new(school_params)   # it'll create a new school with all the params.
+      if @school.save   #it'll save the newly created school & returns the boolean values.
+        # redirect_to @school
+        render :json => @school, :status => :ok
+      end
+    rescue => e
+      p e
+      p e.backtrace
+      render :json => { "error" => e.message}, :status => :unprocessable_entity
+      # render 'new'  # this method is used so that the @school object is passed back to the new template when it is rendered
     end
   end
 
   def update
-    @school = School.find(params[:id])
-
-    if @school.update(school_params)  # it'll update school and return boolean values.
-      redirect_to @school
-    else
-      render 'edit'
+    begin
+      @school = School.find(params[:id])
+      if @school.update(school_params)  # it'll update school and return boolean values.
+        # redirect_to @school
+        render :json => @school, :status => :ok
+      end
+    rescue => e
+      p e
+      p e.backtrace
+      render :json => { "error" => e.message}, :status => :unprocessable_entity
+      # render 'edit'
     end
   end
 
   def destroy
-    @school = School.find(params[:id])
-
     begin
-      School.transaction do # Before destroying school it'll destroy all the associated tables with it.
-        School.find(@school.id).students.destroy_all
-        School.find(@school.id).teachers.destroy_all
-        School.find(@school.id).classrooms.destroy_all
-        School.find(@school.id).subjects.destroy_all
+      @school = School.find(params[:id])
+      begin
+        School.transaction do # Before destroying school it'll destroy all the associated tables with it.
+          School.find(@school.id).students.destroy_all
+          School.find(@school.id).teachers.destroy_all
+          School.find(@school.id).classrooms.destroy_all
+          School.find(@school.id).subjects.destroy_all
+        end
       end
+
+      if @school.destroy   # it'll delete the requested school, based on School ID
+        render :json => {}, :status => :ok
+      end
+    rescue => e
+      p e
+      p e.backtrace
+      render :json => { "error" => e.message}, :status => :unprocessable_entity
     end
-
-    @school.destroy   # it'll delete the requested school, based on School ID
-
-    redirect_to schools_path
+    # redirect_to schools_path
   end
 
   private

@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
 
   def index
     @students = Student.all   #It'll return all the available Student.
+    render :json => @students, status: :ok
   end
 
   def index_by_classroom_id # Only display students of particular classroom.
@@ -10,11 +11,18 @@ class StudentsController < ApplicationController
     if @classroom
       params[:format] = @classroom.school_id
       @students = @classroom.students
+      render :json => @students, status: :ok
     end
   end
 
   def show
-    @student = Student.find(params[:id])  #it'll show a requested Student based on Student ID.
+    begin
+      @student = Student.find(params[:id])  #it'll show a requested Student based on Student ID.
+      render :json => @student, status: :ok
+    rescue => e
+      p e
+      render :json => { "error" => e.message}, :status => :unprocessable_entity
+    end
   end
 
   def new
@@ -26,29 +34,48 @@ class StudentsController < ApplicationController
   end
 
   def create
-    student_params=(params.require(:student).permit(:name, :father_name, :mother_name, :address, :city, :state, :zipcode, :phone, :classroom_id, :school_id)).merge(:subject_ids=>params[:student][:subject_ids])
-    @student = Student.new(student_params)   # it'll create a new student with all the params.
-    if @student.save   #it'll save the newly created student & returns the boolean values.
-      redirect_to @student
-    else
-      render 'new'  # this method is used so that the @student object is passed back to the new template when it is rendered
+    begin
+      student_params=(params.require(:student).permit(:name, :father_name, :mother_name, :address, :city, :state, :zipcode, :phone, :classroom_id, :school_id)).merge(:subject_ids=>params[:student][:subject_ids])
+      @student = Student.new(student_params)   # it'll create a new student with all the params.
+      if @student.save   #it'll save the newly created student & returns the boolean values.
+        # redirect_to @student
+        render :json => @student, :status => :ok
+      end
+    rescue => e
+      p e
+      p e.backtrace
+      render :json => { "error" => e.message}, :status => :unprocessable_entity
+      # render 'new'  # this method is used so that the @student object is passed back to the new template when it is rendered
     end
   end
 
   def update
-    @student = Student.find(params[:id])
-    student_params=(params.require(:student).permit(:name, :father_name, :mother_name, :address, :city, :state, :zipcode, :phone, :classroom_id, :school_id)).merge(:subject_ids=>params[:student][:subject_ids])
-    if @student.update(student_params)  # it'll update student and return boolean values.
-      redirect_to @student
-    else
-      render 'edit'
+    begin
+      @student = Student.find(params[:id])
+      student_params=(params.require(:student).permit(:name, :father_name, :mother_name, :address, :city, :state, :zipcode, :phone, :classroom_id, :school_id)).merge(:subject_ids=>params[:student][:subject_ids])
+      if @student.update(student_params)  # it'll update student and return boolean values.
+        # redirect_to @student
+        render :json => @student, :status => :ok
+      end
+    rescue => e
+      p e
+      p e.backtrace
+      render :json => { "error" => e.message}, :status => :unprocessable_entity
+      # render 'edit'
     end
   end
 
   def destroy
-    @student = Student.find(params[:id])
-    @student.destroy   # it'll delete the requested student, based on Student ID
-
-    redirect_to students_path
+    begin
+      @student = Student.find(params[:id])
+      if @student.destroy   # it'll delete the requested student, based on Student ID
+        render :json => {}, status: :ok
+      end
+    rescue => e
+      p e
+      p e.backtrace
+      render :json => { "error" => e.message}, :status => :unprocessable_entity
+      # redirect_to students_path
+    end
   end
 end
