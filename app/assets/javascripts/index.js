@@ -16,8 +16,8 @@ PS.Index.prototype = {
             $('#schoolProjectIndex #schoolDashboard').addClass('hidden');
             $('#schoolProjectIndex #homeDashboard').removeClass('hidden');
             $('#schoolProjectIndex #schoolDashboardButton').removeClass('hidden');
-            $('#schoolProjectIndex #newSchoolButton').addClass('hidden')
-            $('#schoolShow .schoolHead').addClass('hidden')
+            $('#schoolProjectIndex #newSchoolButton').addClass('hidden');
+            $('#schoolShow .schoolHead').addClass('hidden');
         });
 
         // School Index

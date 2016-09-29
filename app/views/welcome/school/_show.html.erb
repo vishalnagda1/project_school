@@ -1,73 +1,193 @@
-<!--<div id="schoolShow">-->
-  <!--<div class="hidden schoolHead">-->
-    <!--<h1>Show School View</h1>-->
-  <!--</div>-->
+<div id="schoolShow" class="hidden">
+  <input type="hidden" value="" class="school-id">
+  <div class="row">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center school-name">School Name</h1>
+        <div class="row text-center">
+          <div class="col-md-12 text-center">
+            <h4 class="school-address-details">Address, City, State, Zipcode</h4>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-md-12 text-center">
+            <h5 class="school-contact-details">1234567890</h5>
+          </div>
+        </div>
+      </div>
 
-  <!--&lt;!&ndash;Edit School Modal &ndash;&gt;-->
-  <!--<div class="modal fade" id="schoolEditModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">-->
-    <!--<div class="modal-dialog" role="document">-->
-      <!--<div class="modal-content">-->
-        <!--<div class="modal-header">-->
-          <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-          <!--<h4 class="modal-title" id="editModalLabel">Edit School</h4>-->
-        <!--</div>-->
-        <!--<div class="modal-body">-->
+      <!--Edit School Modal -->
+      <div class="modal fade" id="schoolEditModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="editModalLabel">New School</h4>
+            </div>
+            <div class="modal-body">
 
-          <!--<form class="form-horizontal edit-school-form">-->
-            <!--<fieldset>-->
-              <!--<div class="form-group">-->
-                <!--&lt;!&ndash;<label for="inputEmail" class="col-lg-2 control-label">Email</label>&ndash;&gt;-->
-                <!--<div class="col-lg-10 col-lg-offset-1">-->
-                  <!--<input type="text" class="form-control" name="name" id="inputSchoolName" placeholder="Name">-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="form-group">-->
-                <!--&lt;!&ndash;<label for="textArea" class="col-lg-2 control-label">Textarea</label>&ndash;&gt;-->
-                <!--<div class="col-lg-10 col-lg-offset-1">-->
-                  <!--<textarea class="form-control" rows="3" name="address" id="inputSchoolAddress" placeholder="Address"></textarea>-->
-                  <!--&lt;!&ndash;<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>&ndash;&gt;-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="form-group">-->
-                <!--&lt;!&ndash;<label for="inputEmail" class="col-lg-2 control-label">Email</label>&ndash;&gt;-->
-                <!--<div class="col-lg-10 col-lg-offset-1">-->
-                  <!--<input type="text" class="form-control" name="city" id="inputSchoolCity" placeholder="City">-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="form-group">-->
-                <!--&lt;!&ndash;<label for="inputEmail" class="col-lg-2 control-label">Email</label>&ndash;&gt;-->
-                <!--<div class="col-lg-10 col-lg-offset-1">-->
-                  <!--<input type="text" class="form-control" name="state" id="inputSchoolState" placeholder="State">-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="form-group">-->
-                <!--&lt;!&ndash;<label for="inputEmail" class="col-lg-2 control-label">Email</label>&ndash;&gt;-->
-                <!--<div class="col-lg-10 col-lg-offset-1">-->
-                  <!--<input type="text" class="form-control" name="zipcode" id="inputSchoolZipcode" placeholder="Zipcode">-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="form-group">-->
-                <!--&lt;!&ndash;<label for="inputEmail" class="col-lg-2 control-label">Email</label>&ndash;&gt;-->
-                <!--<div class="col-lg-10 col-lg-offset-1">-->
-                  <!--<input type="number" class="form-control" name="phone" id="inputSchoolPhone" placeholder="Phone">-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
-              <!--&lt;!&ndash;<div class="col-lg-10 col-lg-offset-2">&ndash;&gt;-->
-              <!--&lt;!&ndash;<button type="reset" class="btn btn-default">Cancel</button>&ndash;&gt;-->
-              <!--&lt;!&ndash;<button type="submit" class="btn btn-primary">Submit</button>&ndash;&gt;-->
-              <!--&lt;!&ndash;</div>&ndash;&gt;-->
-              <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--</fieldset>-->
-          <!--</form>-->
+              <form class="form-horizontal edit-school-form">
+                <fieldset>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="text" class="form-control" name="name" id="inputSchoolName" placeholder="Name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <textarea class="form-control" rows="3" name="address" id="inputSchoolAddress" placeholder="Address"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="text" class="form-control" name="city" id="inputSchoolCity" placeholder="City">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="text" class="form-control" name="state" id="inputSchoolState" placeholder="State">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="text" class="form-control" name="zipcode" id="inputSchoolZipcode" placeholder="Zipcode">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="number" class="form-control" name="phone" id="inputSchoolPhone" placeholder="Phone">
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
 
-        <!--</div>-->
-        <!--<div class="modal-footer">-->
-          <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-          <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="schoolEditButton">Update Info</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<!--</div>-->
+      <!--New Subject Modal -->
+      <div class="modal fade" id="subjectNewModal" tabindex="-1" role="dialog" aria-labelledby="newSubjectModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="newSubjectModalLabel">New Subject</h4>
+            </div>
+            <div class="modal-body">
+
+              <form class="form-horizontal new-subject-form">
+                <fieldset>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="text" class="form-control" name="name" id="inputSchoolName" placeholder="Subject Name">
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="subjectAddButton">Add Subject</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--New Class Modal -->
+      <div class="modal fade" id="classNewModal" tabindex="-1" role="dialog" aria-labelledby="newClassModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="newClassModalLabel">New Class</h4>
+            </div>
+            <div class="modal-body">
+
+              <form class="form-horizontal new-classroom-form">
+                <fieldset>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="text" class="form-control" name="name" id="inputSchoolName" placeholder="Class Name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="number" class="form-control" name="phone" id="inputSchoolPhone" placeholder="Phone">
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="classNewButton">Add Class</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--New Teacher Modal -->
+      <div class="modal fade" id="teacherNewModal" tabindex="-1" role="dialog" aria-labelledby="newTeacherModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="newTeacherModalLabel">New Teacher</h4>
+            </div>
+            <div class="modal-body">
+
+              <form class="form-horizontal new-teacher-form">
+                <fieldset>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="text" class="form-control" name="name" id="inputSchoolName" placeholder="Name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <textarea class="form-control" rows="3" name="address" id="inputSchoolAddress" placeholder="Address"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="text" class="form-control" name="city" id="inputSchoolCity" placeholder="City">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="text" class="form-control" name="state" id="inputSchoolState" placeholder="State">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="text" class="form-control" name="zipcode" id="inputSchoolZipcode" placeholder="Zipcode">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="number" class="form-control" name="phone" id="inputSchoolPhone" placeholder="Phone">
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="teacherAddButton">Add Teacher</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+  </div>
+</div>

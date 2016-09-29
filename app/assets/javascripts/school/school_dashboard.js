@@ -54,9 +54,19 @@ PS.schoolIndex.prototype = {
     schoolShow:function() {
         $('#schoolDashboard .school-list-table .show-school').click(function(){
             var schoolId = $(this).attr('school_id');
-            // alert(schoolId+" Show");
-            $('#schoolShow .schoolHead').removeClass('hidden')
+            $('#schoolProjectIndex #schoolShow').removeClass('hidden')
             $('#schoolProjectIndex #schoolDashboard').addClass('hidden');
+            $('#schoolProjectIndex #newSchoolButton').addClass('hidden');
+            $('#schoolProjectIndex #allSchoolButton').removeClass('hidden');
+            $('#schoolProjectIndex #editSchoolButton').removeClass('hidden');
+            $('#schoolProjectIndex #newSubjectButton').removeClass('hidden');
+            $('#schoolProjectIndex #viewSubjectButton').removeClass('hidden');
+            $('#schoolProjectIndex #newClassButton').removeClass('hidden');
+            $('#schoolProjectIndex #viewClassButton').removeClass('hidden');
+            $('#schoolProjectIndex #newTeacherButton').removeClass('hidden');
+            $('#schoolProjectIndex #viewTeacherButton').removeClass('hidden');
+            $('#schoolShow .school-id').val(schoolId);
+            var schoolShow = new PS.schoolShow();
         });
     },
 

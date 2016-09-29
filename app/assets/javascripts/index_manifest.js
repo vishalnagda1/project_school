@@ -4,3 +4,4 @@
 //= require common/jquery.validate.min.js
 //= require index.js
 //= require school/school_dashboard.js
+//= require school/school_show.js
