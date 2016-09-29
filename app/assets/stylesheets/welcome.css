@@ -3,5 +3,9 @@
   They will automatically be included in application.css.
 */
 .welcome-margin-top {
+    margin-top: 8%;
+}
+
+#homeDashboard {
     margin-top: 25%;
 }

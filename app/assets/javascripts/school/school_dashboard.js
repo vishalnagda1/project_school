@@ -10,25 +10,37 @@ PS.schoolIndex.prototype = {
     },
 
     showSchoolList: function () {
+        var table = $('#schoolDashboard .school-list-table').DataTable();
+        table.clear();
         var self = this;
         $.ajax({
-            async: false,
             url: "/schools",
             type: "GET",
             format: "JSON",
             success: function(data)
             {
                 // $.each(data,function(i,item) {
-                //     console.log(item.name, item.address);
+                //     console.log(item);
+                // console.log(data)
             // })
 
-                var school_list = '';
-
                 $.each(data,function(i, item) {
-                    school_list +='<tr><td>'+item.name+'</td><td>'+item.address+'</td><td>'+item.city+'</td><td>'+item.state+'</td><td>'+item.zipcode+'</td><td>'+item.phone+'</td><td><a class="btn btn-success btn-xs">Show</a></td><td><a class="btn btn-warning btn-xs">Edit</a></td><td><a class="btn btn-danger btn-xs">Delete</a></td></tr>';
+                    table.row.add($(
+                        '<tr><td>'+item.name+'</td>' +
+                        '<td>'+item.address+'</td>' +
+                        '<td>'+item.city+'</td>' +
+                        '<td>'+item.state+'</td>' +
+                        '<td>'+item.zipcode+'</td>' +
+                        '<td>'+item.phone+'</td>' +
+                        '<td><a class="btn btn-success btn-xs show-school" school_id="'+item.id+'">Show</a></td>' +
+                        '<td><a class="btn btn-warning btn-xs edit-school" school_id="'+item.id+'">Edit</a></td>' +
+                        '<td><a class="btn btn-danger btn-xs delete-school" school_id="'+item.id+'">Delete</a></td>' +
+                        '</tr>'
+                    )).draw();
                 });
-
-                $('#schoolDashboard .school-list-table').append(school_list);
+                self.schoolShow();
+                self.schoolEdit();
+                self.schoolDelete();
             },
 
             error: function (msg) {
@@ -36,5 +48,32 @@ PS.schoolIndex.prototype = {
                 alert(msg.responseText);
             }
         });
+    },
+
+    // Show School Details
+    schoolShow:function() {
+        $('#schoolDashboard .school-list-table .show-school').click(function(){
+            var schoolId = $(this).attr('school_id');
+            // alert(schoolId+" Show");
+            $('#schoolShow .schoolHead').removeClass('hidden')
+            $('#schoolProjectIndex #schoolDashboard').addClass('hidden');
+        });
+    },
+
+    // Edit School Details
+    schoolEdit:function() {
+        $('#schoolDashboard .school-list-table .edit-school').click(function(){
+            var schoolId = $(this).attr('school_id');
+            alert(schoolId+" Edit");
+        });
+    },
+
+    // Delete School Details
+    schoolDelete:function() {
+        $('#schoolDashboard .school-list-table .delete-school').click(function(){
+            var schoolId = $(this).attr('school_id');
+            alert(schoolId+" Delete");
+        });
     }
+
 }

@@ -9,7 +9,7 @@
   <body>
     <div class="container" id="schoolProjectIndex">
       <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container" id="schoolContainer">
+        <div class="container">
           <div class="navbar-header">
             <a href="../" class="navbar-brand" id="mainPage">Project School</a>
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
@@ -23,18 +23,25 @@
               <li>
                 <a id="schoolMenu" class="form-contorl">School</a>
               </li>
+              <li>
+                <a id="newSchool" class="form-contorl hidden" data-target="#commonModal" data-toggle="modal">New School</a>
+              </li>
             </ul>
           </div>
         </div>
       </div>
 
+      <div class="welcome-margin-top"></div>
+
       <div id="homeDashboard">
-        <div class="row welcome-margin-top text-center">
+        <div class="row text-center">
           <h1>Welcome To The Project School</h1>
         </div>
       </div>
 
-      <%= render partial: 'welcome/school_index' %>
+      <%= render partial: 'welcome/school/index' %>
+      <%= render partial: 'welcome/school/show' %>
+      <%= render partial: 'welcome/modal' %>
 
       <!--<div class="container" id="schoolProjectContainer">-->
         <!--< %= yield %>-->
@@ -43,9 +50,7 @@
   </body>
 </html>
 
-<%= javascript_include_tag 'common/jquery.min'%>
-<%= javascript_include_tag 'index'%>
-<%= javascript_include_tag 'school/school_dashboard'%>
+<%= javascript_include_tag 'index_manifest'%>
 <script>
   $(document).ready(function () {
     var index = new PS.Index();
