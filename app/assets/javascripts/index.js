@@ -38,5 +38,25 @@ PS.Index.prototype = {
             $('#schoolNewModal .new-school-form #inputSchoolZipcode').val('');
             $('#schoolNewModal .new-school-form #inputSchoolPhone').val('');
         });
+
+        $('#schoolProjectIndex #newSchoolButton').click(function() {
+            $('#schoolDashboard #schoolNewModal').modal('show');
+        });
+
+        $('#schoolProjectIndex #editSchoolButton').click(function() {
+            $('#schoolShow #schoolEditModal').modal('show');
+        });
+
+        $('#schoolProjectIndex #newSubjectButton').click(function() {
+            $('#schoolShow #subjectNewModal').modal('show');
+        });
+
+        $('#schoolProjectIndex #newClassButton').click(function() {
+            $('#schoolShow #classNewModal').modal('show');
+        });
+
+        $('#schoolProjectIndex #newTeacherButton').click(function() {
+            $('#schoolShow #teacherNewModal').modal('show');
+        });
     }
 }

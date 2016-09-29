@@ -39,8 +39,6 @@ PS.schoolIndex.prototype = {
                     )).draw();
                 });
                 self.schoolShow();
-                // self.schoolEdit();
-                // self.schoolDelete();
             },
 
             error: function (jqXHR, textStatus, errorThrown) {
@@ -127,21 +125,5 @@ PS.schoolIndex.prototype = {
             }
         });
     }
-
-    // Edit School Details
-    // schoolEdit:function() {
-    //     $('#schoolDashboard .school-list-table .edit-school').click(function(){
-    //         var schoolId = $(this).attr('school_id');
-    //         alert(schoolId+" Edit");
-    //     });
-    // },
-
-    // Delete School Details
-    // schoolDelete:function() {
-    //     $('#schoolDashboard .school-list-table .delete-school').click(function(){
-    //         var schoolId = $(this).attr('school_id');
-    //         alert(schoolId+" Delete");
-    //     });
-    // }
 
 }
