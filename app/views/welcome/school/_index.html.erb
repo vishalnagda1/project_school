@@ -2,6 +2,61 @@
   <div class="row">
     <div class="row">
       <div class="col-md-12"><h1 class="text-center">School Dashboard</h1></div>
+
+      <!--New School Modal -->
+      <div class="modal fade" id="schoolNewModal" tabindex="-1" role="dialog" aria-labelledby="newModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="newModalLabel">New School</h4>
+            </div>
+            <div class="modal-body">
+
+              <form class="form-horizontal new-school-form">
+                <fieldset>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="text" class="form-control" name="name" id="inputSchoolName" placeholder="Name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <textarea class="form-control" rows="3" name="address" id="inputSchoolAddress" placeholder="Address"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="text" class="form-control" name="city" id="inputSchoolCity" placeholder="City">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="text" class="form-control" name="state" id="inputSchoolState" placeholder="State">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="text" class="form-control" name="zipcode" id="inputSchoolZipcode" placeholder="Zipcode">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                      <input type="number" class="form-control" name="phone" id="inputSchoolPhone" placeholder="Phone">
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="schoolAddButton">Add School</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
     <br><br>
     <div class="row">
@@ -14,7 +69,7 @@
             <th>State</th>
             <th>Zipcode</th>
             <th>Phone</th>
-            <th colspan="3">Operations</th>
+            <th>Operations</th>
           </tr>
         </thead>
         <tbody></tbody>

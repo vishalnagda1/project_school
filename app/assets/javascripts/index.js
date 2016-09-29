@@ -15,24 +15,28 @@ PS.Index.prototype = {
         $('#schoolProjectIndex #mainPage').click(function () {
             $('#schoolProjectIndex #schoolDashboard').addClass('hidden');
             $('#schoolProjectIndex #homeDashboard').removeClass('hidden');
-            $('#schoolProjectIndex #schoolMenu').removeClass('hidden');
-            $('#schoolProjectIndex #newSchool').addClass('hidden')
+            $('#schoolProjectIndex #schoolDashboardButton').removeClass('hidden');
+            $('#schoolProjectIndex #newSchoolButton').addClass('hidden')
             $('#schoolShow .schoolHead').addClass('hidden')
         });
 
         // School Index
-        $('#schoolProjectIndex #schoolMenu').click(function () {
+        $('#schoolProjectIndex #schoolDashboardButton').click(function () {
             $('#schoolProjectIndex #schoolDashboard').removeClass('hidden');
             $('#schoolProjectIndex #homeDashboard').addClass('hidden');
-            $('#schoolProjectIndex #schoolMenu').addClass('hidden');
-            $('#schoolProjectIndex #newSchool').removeClass('hidden');
+            $('#schoolProjectIndex #schoolDashboardButton').addClass('hidden');
+            $('#schoolProjectIndex #newSchoolButton').removeClass('hidden');
             var schoolIndex = new PS.schoolIndex();
         });
 
         // New School Form
-        $('#schoolProjectIndex #newSchool').click(function () {
-            // alert("New School");
-            $('.comman-modal #modalContant').removeClass('hidden');
+        $('#schoolProjectIndex #newSchoolButton').click(function () {
+            $('#schoolNewModal .new-school-form #inputSchoolName').val('');
+            $('#schoolNewModal .new-school-form #inputSchoolAddress').val('');
+            $('#schoolNewModal .new-school-form #inputSchoolCity').val('');
+            $('#schoolNewModal .new-school-form #inputSchoolState').val('');
+            $('#schoolNewModal .new-school-form #inputSchoolZipcode').val('');
+            $('#schoolNewModal .new-school-form #inputSchoolPhone').val('');
         });
     }
 }

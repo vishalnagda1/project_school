@@ -21,10 +21,10 @@
           <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
               <li>
-                <a id="schoolMenu" class="form-contorl">School</a>
+                <a id="schoolDashboardButton" class="form-contorl">School</a>
               </li>
               <li>
-                <a id="newSchool" class="form-contorl hidden" data-target="#commonModal" data-toggle="modal">New School</a>
+                <a type="button" id="newSchoolButton" class="form-contorl hidden" data-toggle="modal" data-target="#schoolNewModal">New School</a>
               </li>
             </ul>
           </div>
@@ -41,7 +41,6 @@
 
       <%= render partial: 'welcome/school/index' %>
       <%= render partial: 'welcome/school/show' %>
-      <%= render partial: 'welcome/modal' %>
 
       <!--<div class="container" id="schoolProjectContainer">-->
         <!--< %= yield %>-->
