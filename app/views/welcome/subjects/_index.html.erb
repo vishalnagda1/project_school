@@ -1,5 +1,36 @@
 <div id="subjectDashboard" class="hidden">
   <input type="hidden" value="" class="school-id">
+  <input type="hidden" value="" class="subject-id">
+
+  <!--Edit Subject Modal -->
+  <div class="modal fade" id="subjectEditModal" tabindex="-1" role="dialog" aria-labelledby="editSubjectModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="editSubjectModalLabel">Edit Subject</h4>
+        </div>
+        <div class="modal-body">
+
+          <form class="form-horizontal edit-subject-form">
+            <fieldset>
+              <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-1">
+                  <input type="text" class="form-control" name="name" id="inputSubjectName" placeholder="Subject Name">
+                </div>
+              </div>
+            </fieldset>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="subjectEditButton">Update Subject</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <br><br>
   <div class="row">
     <table class="table table-responsive table-bordered text-center subject-list-table">
