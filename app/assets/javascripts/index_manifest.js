@@ -5,3 +5,4 @@
 //= require index.js
 //= require school/school_dashboard.js
 //= require school/school_show.js
+//= require subject/subject_dashboard.js

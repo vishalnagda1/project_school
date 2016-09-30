@@ -21,6 +21,7 @@ class SchoolsController < ApplicationController
 
   def edit
     @school = School.find(params[:id])  # it'll update the school.
+    render json: @school
   end
 
   def create
@@ -41,6 +42,9 @@ class SchoolsController < ApplicationController
   def update
     begin
       @school = School.find(params[:id])
+      p "+++++++++"
+      p school_params
+      p "+++++++++"
       if @school.update(school_params)  # it'll update school and return boolean values.
         # redirect_to @school
         render :json => @school, :status => :ok

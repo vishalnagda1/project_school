@@ -54,8 +54,9 @@ PS.schoolIndex.prototype = {
             var schoolId = $(this).attr('school_id');
             $('#schoolProjectIndex #schoolShow').removeClass('hidden')
             $('#schoolProjectIndex #schoolDashboard').addClass('hidden');
+            $('#schoolProjectIndex #schoolDashboardButton').text('School Dashboard');
+            $('#schoolProjectIndex #schoolDashboardButton').removeClass('hidden');
             $('#schoolProjectIndex #newSchoolButton').addClass('hidden');
-            $('#schoolProjectIndex #allSchoolButton').removeClass('hidden');
             $('#schoolProjectIndex #editSchoolButton').removeClass('hidden');
             $('#schoolProjectIndex #newSubjectButton').removeClass('hidden');
             $('#schoolProjectIndex #viewSubjectButton').removeClass('hidden');
