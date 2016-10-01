@@ -9,6 +9,7 @@ PS.schoolIndex.prototype = {
         this.showSchoolList();
         this.modalFormValidation();
         this.addSchoolDetails();
+        this.viewAutoReload();
     },
 
     showSchoolList: function () {
@@ -50,6 +51,7 @@ PS.schoolIndex.prototype = {
 
     // Show School Details
     schoolShow:function() {
+        var self = this;
         $('#schoolDashboard .school-list-table .show-school').click(function(){
             var schoolId = $(this).attr('school_id');
             $('#schoolProjectIndex #schoolShow').removeClass('hidden')
@@ -64,6 +66,7 @@ PS.schoolIndex.prototype = {
             $('#schoolProjectIndex #viewClassButton').removeClass('hidden');
             $('#schoolProjectIndex #newTeacherButton').removeClass('hidden');
             $('#schoolProjectIndex #viewTeacherButton').removeClass('hidden');
+            $('#schoolProjectIndex #deleteButton').removeClass('hidden');
             $('#schoolShow .school-id').val(schoolId);
             var schoolShow = new PS.schoolShow();
         });
@@ -117,7 +120,7 @@ PS.schoolIndex.prototype = {
                     success: function(data, textStatus, jqXHR) {
                         console.log(data);
                         $('#schoolDashboard #schoolNewModal').modal('hide');
-                        self.showSchoolList();
+                        // self.showSchoolList();
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         alert(jqXHR.responseText);
@@ -125,6 +128,13 @@ PS.schoolIndex.prototype = {
                 });
             }
         });
+    },
+
+    viewAutoReload:function () {
+        var self = this;
+        setInterval( function () {
+            self.showSchoolList();
+        }, 1000 );
     }
 
 }

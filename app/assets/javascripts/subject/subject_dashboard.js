@@ -9,6 +9,7 @@ PS.subjectIndex.prototype = {
         this.getAllSubjects();
         this.modalFormValidation();
         this.updateSubjectDetails();
+        // this.viewAutoReload();
     },
 
     //Listing all the subject of a particular school
@@ -48,6 +49,7 @@ PS.subjectIndex.prototype = {
     },
 
     subjectEdit:function() {
+        $('#subjectDashboard .subject-list-table .edit-subject').unbind('click')
         $('#subjectDashboard .subject-list-table .edit-subject').click(function() {
             var subject_id = $(this).attr('subject_id');
             $('#subjectDashboard .subject-id').val(subject_id);
@@ -79,6 +81,7 @@ PS.subjectIndex.prototype = {
 
     updateSubjectDetails:function() {
         var self = this;
+        $('#subjectDashboard #subjectEditModal #subjectEditButton').unbind('click');
         $('#subjectDashboard #subjectEditModal #subjectEditButton').click(function() {
             if ($('#subjectDashboard #subjectEditModal .edit-subject-form').valid()) {
                 var subject_data = {};
@@ -102,5 +105,12 @@ PS.subjectIndex.prototype = {
                 });
             }
         });
-    }
+    },
+
+    // viewAutoReload:function () {
+    //     var self = this;
+    //     setInterval( function () {
+    //         self.getAllSubjects();
+    //     }, 1000 );
+    // }
 }

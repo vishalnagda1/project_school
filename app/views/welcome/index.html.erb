@@ -3,7 +3,6 @@
 <head>
   <title>ProjectSchool</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
   <body>
@@ -48,7 +47,10 @@
               <li>
                 <a type="button" id="viewTeacherButton" class="form-contorl hidden">View Teacher</a>
               </li>
-
+              <!--Delete Button-->
+              <li>
+                <a type="button" id="deleteButton" class="form-contorl hidden">Delete</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -72,6 +74,7 @@
   </body>
 </html>
 
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'index_manifest'%>
 <script>
   $(document).ready(function () {

@@ -9,8 +9,10 @@ PS.schoolShow.prototype = {
         this.showSchoolDetails();
         this.modalFormValidation();
         this.updateSchoolDetails();
-        this.addNewSubject();
         this.listSubjects();
+        this.addNewSubject();
+        this.schoolDelete();
+        this.school_id=$('#schoolShow .school-id').val();
     },
 
     // Getting School Details
@@ -87,7 +89,7 @@ PS.schoolShow.prototype = {
         $('#schoolEditModal .modal-footer #schoolEditButton').click(function () {
             if ($('#schoolShow #schoolEditModal .edit-school-form').valid()) {
                 var school_data = {};
-                var school_id = $('#schoolShow .school-id').val();
+                var school_id = self.school_id;
                 school_data['name'] = $('#schoolEditModal .edit-school-form #inputSchoolName').val();
                 school_data['address'] = $('#schoolEditModal .edit-school-form #inputSchoolAddress').val();
                 school_data['city'] = $('#schoolEditModal .edit-school-form #inputSchoolCity').val();
@@ -113,8 +115,20 @@ PS.schoolShow.prototype = {
         });
     },
 
+    // Listing all the subjects
+    listSubjects:function() {
+        $('#schoolProjectIndex #viewSubjectButton').unbind('click');
+        $('#schoolProjectIndex #viewSubjectButton').click(function() {
+            var school_id = $('#schoolShow .school-id').val();
+            $('#schoolShow #subjectDashboard').removeClass('hidden');
+            $('#subjectDashboard .school-id').val(school_id);
+            var subjectIndex = new PS.subjectIndex();
+        })
+    },
+
     // Adding new subject
     addNewSubject:function() {
+        $('#subjectNewModal .modal-footer #subjectAddButton').unbind('click');
         $('#subjectNewModal .modal-footer #subjectAddButton').click(function() {
             if ($('#schoolShow #subjectNewModal .new-subject-form').valid()) {
                 var subject_data = {};
@@ -128,7 +142,7 @@ PS.schoolShow.prototype = {
                     format: "JSON",
                     success: function(data, textStatus, jqXHR) {
                         $('#schoolShow #subjectNewModal').modal('hide');
-                        alert("Subject Added");
+                        // alert("Subject Added");
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         alert(jqXHR.responseText);
@@ -138,13 +152,37 @@ PS.schoolShow.prototype = {
         });
     },
 
-    // Listing all the subjects
-    listSubjects:function() {
-        $('#schoolProjectIndex #viewSubjectButton').click(function() {
-            var school_id = $('#schoolShow .school-id').val();
-            $('#schoolShow #subjectDashboard').removeClass('hidden');
-            $('#subjectDashboard .school-id').val(school_id);
-            var subjectIndex = new PS.subjectIndex();
-        })
+    // Delete Current Selected School.
+    schoolDelete:function() {
+        var self = this;
+        $('#schoolProjectIndex #deleteButton').unbind('click');
+        $('#schoolProjectIndex #deleteButton').click(function() {
+            var school_id = self.school_id;
+            $.ajax({
+                url: "/schools/"+school_id,
+                type: "DELETE",
+                success: function(data) {
+                    alert("School Deleted");
+                    // Hiding All School Show Menu
+                    $('#schoolProjectIndex #schoolDashboardButton').addClass('hidden');
+                    $('#schoolProjectIndex #editSchoolButton').addClass('hidden');
+                    $('#schoolProjectIndex #newSubjectButton').addClass('hidden');
+                    $('#schoolProjectIndex #viewSubjectButton').addClass('hidden');
+                    $('#schoolProjectIndex #newClassButton').addClass('hidden');
+                    $('#schoolProjectIndex #viewClassButton').addClass('hidden');
+                    $('#schoolProjectIndex #newTeacherButton').addClass('hidden');
+                    $('#schoolProjectIndex #viewTeacherButton').addClass('hidden');
+                    $('#schoolProjectIndex #deleteButton').addClass('hidden');
+                    // Hiding School Show View
+                    $('#schoolProjectIndex #schoolShow').addClass("hidden");
+                    // Displaying School Dashboard Menu Buttons
+                    $('#schoolProjectIndex #newSchoolButton').removeClass('hidden');
+                    $('#schoolProjectIndex #schoolDashboard').removeClass('hidden');
+                },
+                error: function(message) {
+                    alert(message.responseText);
+                }
+            });
+        });
     }
 }
