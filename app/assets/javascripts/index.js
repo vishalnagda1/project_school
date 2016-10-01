@@ -88,12 +88,6 @@ PS.Index.prototype = {
             $('#schoolShow #subjectNewModal').modal('show');
         });
 
-        // New Class Modal Button
-        $('#schoolProjectIndex #newClassButton').unbind('click');
-        $('#schoolProjectIndex #newClassButton').click(function() {
-            $('#schoolShow #classNewModal').modal('show');
-        });
-
         // New Teacher Modal Button
         $('#schoolProjectIndex #newTeacherButton').unbind('click');
         $('#schoolProjectIndex #newTeacherButton').click(function() {

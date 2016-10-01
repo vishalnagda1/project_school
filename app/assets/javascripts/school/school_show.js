@@ -11,6 +11,8 @@ PS.schoolShow.prototype = {
         this.updateSchoolDetails();
         this.listSubjects();
         this.addNewSubject();
+        this.showClassRoomModal();
+        this.newClassRoom();
         this.schoolDelete();
         this.school_id=$('#schoolShow .school-id').val();
     },
@@ -89,7 +91,7 @@ PS.schoolShow.prototype = {
         $('#schoolEditModal .modal-footer #schoolEditButton').click(function () {
             if ($('#schoolShow #schoolEditModal .edit-school-form').valid()) {
                 var school_data = {};
-                var school_id = self.school_id;
+                var school_id = $('#schoolShow .school-id').val();
                 school_data['name'] = $('#schoolEditModal .edit-school-form #inputSchoolName').val();
                 school_data['address'] = $('#schoolEditModal .edit-school-form #inputSchoolAddress').val();
                 school_data['city'] = $('#schoolEditModal .edit-school-form #inputSchoolCity').val();
@@ -149,6 +151,79 @@ PS.schoolShow.prototype = {
                     }
                 });
             }
+        });
+    },
+
+    // Displaying a new Classroom Modal with loaded data.
+    showClassRoomModal:function () {
+        var self = this;
+        $('#schoolProjectIndex #newClassButton').unbind('click');
+        $('#schoolProjectIndex #newClassButton').click(function () {
+            var school_id = $('#schoolShow .school-id').val();
+            $('#schoolShow #classNewModal #inputClassName').val();
+            $.ajax({
+                url: "/subjects/index_by_school_id."+school_id,
+                type: "GET",
+                format: "JSON",
+                success: function(data, textStatus, jqXHR)
+                {
+                    // $.each(data,function(i,item) {
+                    //     console.log(item);
+                    // console.log(data);
+                    // })
+
+                    $('#schoolShow #classNewModal .random-subject-list').html('');
+                    $.each(data,function(i, item) {
+                        $('#schoolShow #classNewModal .random-subject-list').append('<div class="checkbox checkbox-primary">'+
+                            '<input id="subjectCheckbox'+item.id+'" name="subject_checkbox" type="checkbox" value="'+ item.id +'">'+
+                            '<label for="subjectCheckbox'+item.id+'">'+ item.name +'</label>' +
+                            '</div>');
+                    });
+                    $('#schoolShow #classNewModal').modal('show');
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+
+                    alert(jqXHR.responseText);
+                }
+            });
+        });
+    },
+
+    // Creating New Classroom
+    newClassRoom:function () {
+        var self = this;
+        $('#schoolShow #classNewModal #classNewButton').unbind('click');
+        $('#schoolShow #classNewModal #classNewButton').click(function () {
+            var school_id = $('#schoolShow .school-id').val();
+            var class_data = {};
+            class_data['name'] = $('#schoolShow #classNewModal #inputClassName').val();
+            var subject = [];
+            $('#schoolShow #classNewModal :checkbox:checked').each(function (i) {
+                subject[i] = $(this).val();
+            });
+            class_data['subject_ids'] = subject;
+            class_data['school_id'] = school_id;
+            class_data['no_of_students'] = 0;
+            // console.log(class_data);
+            $.ajax({
+                url: "/classrooms",
+                type: "POST",
+                data: {classroom:class_data},
+                format: "JSON",
+                success: function(data, textStatus, jqXHR)
+                {
+                    // $.each(data,function(i,item) {
+                    //     console.log(item);
+                    // console.log(data);
+                    // })
+
+                    $('#schoolShow #classNewModal').modal('hide');
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+
+                    alert(jqXHR.responseText);
+                }
+            });
         });
     },
 

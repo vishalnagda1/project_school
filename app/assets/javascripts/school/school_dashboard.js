@@ -9,7 +9,7 @@ PS.schoolIndex.prototype = {
         this.showSchoolList();
         this.modalFormValidation();
         this.addSchoolDetails();
-        this.viewAutoReload();
+        // this.viewAutoReload();
     },
 
     showSchoolList: function () {
@@ -52,6 +52,7 @@ PS.schoolIndex.prototype = {
     // Show School Details
     schoolShow:function() {
         var self = this;
+        $('#schoolDashboard .school-list-table .show-school').unbind('click');
         $('#schoolDashboard .school-list-table .show-school').click(function(){
             var schoolId = $(this).attr('school_id');
             $('#schoolProjectIndex #schoolShow').removeClass('hidden')
